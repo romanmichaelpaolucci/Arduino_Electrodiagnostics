@@ -45,9 +45,6 @@ int pin2DenoisedValue = 0;
 int pin1DenoisedValue = 0;
 int pin0DenoisedValue = 0;
 
-// Flag to determine whether or not we are currently in an action
-bool inAction = false;
-
 const int lt = 10000;
 
 void setup() {
