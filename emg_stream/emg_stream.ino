@@ -38,12 +38,12 @@ int pin1Value = 0;
 int pin0Value = 0;
 
 // Current denoised response from shield
-int pin5DenoisedResponse = 0;
-int pin4DenoisedResponse = 0;
-int pin3DenoisedResponse = 0;
-int pin2DenoisedResponse = 0;
-int pin1DenoisedResponse = 0;
-int pin0DenoisedResponse = 0;
+int pin5DenoisedValue = 0;
+int pin4DenoisedValue = 0;
+int pin3DenoisedValue = 0;
+int pin2DenoisedValue = 0;
+int pin1DenoisedValue = 0;
+int pin0DenoisedValue = 0;
 
 // Flag to determine whether or not we are currently in an action
 bool inAction = false;
@@ -76,26 +76,26 @@ void loop() {
     pin0Values.insert(pin0Values.begin(), pin0Value);
 
     // Vector for action values, holds denoised values
-    pin5DenoisedValues.insert(pin5DenoisedValues.begin(), pin5DenoisedResponse);
-    pin4DenoisedValues.insert(pin4DenoisedValues.begin(), pin4DenoisedResponse);
-    pin3DenoisedValues.insert(pin3DenoisedValues.begin(), pin3DenoisedResponse);
-    pin2DenoisedValues.insert(pin2DenoisedValues.begin(), pin2DenoisedResponse);
-    pin1DenoisedValues.insert(pin1DenoisedValues.begin(), pin1DenoisedResponse);
-    pin0DenoisedValues.insert(pin0DenoisedValues.begin(), pin0DenoisedResponse);
+    pin5DenoisedValues.insert(pin5DenoisedValues.begin(), pin5DenoisedValue);
+    pin4DenoisedValues.insert(pin4DenoisedValues.begin(), pin4DenoisedValue);
+    pin3DenoisedValues.insert(pin3DenoisedValues.begin(), pin3DenoisedValue);
+    pin2DenoisedValues.insert(pin2DenoisedValues.begin(), pin2DenoisedValue);
+    pin1DenoisedValues.insert(pin1DenoisedValues.begin(), pin1DenoisedValue);
+    pin0DenoisedValues.insert(pin0DenoisedValues.begin(), pin0DenoisedValue);
 
 
     // Serial Analysis
-    Serial.print(pin5Value);
+    Serial.print(pin5DenoisedValue);
     Serial.print(",");
-    Serial.print(pin4Value);
+    Serial.print(pin4DenoisedValue);
     Serial.print(",");
-    Serial.print(pin3Value);
+    Serial.print(pin3DenoisedValue);
     Serial.print(",");
-    Serial.print(pin2Value);
+    Serial.print(pin2DenoisedValue);
     Serial.print(",");
-    Serial.print(pin1Value);
+    Serial.print(pin1DenoisedValue);
     Serial.print(",");
-    Serial.println(pin0Value);
+    Serial.println(pin0DenoisedValue);
 
     // Tracks size of all vectors
     size +=1;
@@ -104,12 +104,12 @@ void loop() {
     if (size > 4){
 
     // Denoised response using TKEO
-      pin5DenoisedResponse = pin5Values.at(1)*pin5Values.at(1) - pin5Values.at(0)*pin5Values.at(2);
-      pin4DenoisedResponse = pin4Values.at(1)*pin4Values.at(1) - pin4Values.at(0)*pin4Values.at(2);
-      pin3DenoisedResponse = pin3Values.at(1)*pin3Values.at(1) - pin3Values.at(0)*pin3Values.at(2);
-      pin2DenoisedResponse = pin2Values.at(1)*pin2Values.at(1) - pin2Values.at(0)*pin2Values.at(2);
-      pin1DenoisedResponse = pin1Values.at(1)*pin1Values.at(1) - pin1Values.at(0)*pin1Values.at(2);
-      pin0DenoisedResponse = pin0Values.at(1)*pin0Values.at(1) - pin0Values.at(0)*pin0Values.at(2);
+      pin5DenoisedValue = pin5Values.at(1)*pin5Values.at(1) - pin5Values.at(0)*pin5Values.at(2);
+      pin4DenoisedValue = pin4Values.at(1)*pin4Values.at(1) - pin4Values.at(0)*pin4Values.at(2);
+      pin3DenoisedValue = pin3Values.at(1)*pin3Values.at(1) - pin3Values.at(0)*pin3Values.at(2);
+      pin2DenoisedValue = pin2Values.at(1)*pin2Values.at(1) - pin2Values.at(0)*pin2Values.at(2);
+      pin1DenoisedValue = pin1Values.at(1)*pin1Values.at(1) - pin1Values.at(0)*pin1Values.at(2);
+      pin0DenoisedValue = pin0Values.at(1)*pin0Values.at(1) - pin0Values.at(0)*pin0Values.at(2);
 
       // Avoid overflow
       pin5Values.pop_back();
